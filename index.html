@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Angličtina Unit 5 – City and country</title>
+<style>
+  :root{--bg:#0d1626;--panel:#16243c;--line:#2a3e5e;--gold:#ffd35a;--red:#e8455a;--cy:#3fd0e0;--lime:#a8e05a;--ink:#eef4ff;--muted:#a9bccd}
+  *{box-sizing:border-box}
+  body{margin:0;background:radial-gradient(ellipse at top,#1d3256,var(--bg) 60%);color:var(--ink);font-family:'Segoe UI',Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:1100px;margin:0 auto;padding:22px 16px 60px}
+  header{text-align:center;margin-bottom:16px}
+  h1{font-size:clamp(28px,5.5vw,52px);margin:4px 0 0;color:var(--gold);letter-spacing:1px}
+  .sub{color:var(--muted);font-size:clamp(15px,2.4vw,19px)}
+  .icons{font-size:clamp(26px,5vw,40px);letter-spacing:8px}
+  .badge{display:inline-block;background:linear-gradient(#ffe7a6,#d69a3a);color:#101e3a;font-weight:900;border-radius:8px;padding:0 8px;font-size:.8em}
+  .player{background:#000;border:3px solid var(--gold);border-radius:12px;overflow:hidden;box-shadow:0 10px 40px #000a}
+  video{display:block;width:100%;aspect-ratio:16/9;background:#000}
+  .tip{color:var(--muted);text-align:center;margin:8px 0 0;font-size:15px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .box{background:var(--panel);border:2px solid var(--line);border-radius:12px;padding:16px 18px}
+  .box h2{margin:0 0 10px;color:var(--gold);font-size:22px}
+  .full{grid-column:1/-1}
+  .chap{display:flex;gap:10px;align-items:baseline;width:100%;text-align:left;font:inherit;font-size:17px;color:var(--ink);background:none;border:0;border-bottom:1px solid var(--line);padding:8px 4px;cursor:pointer}
+  .chap:hover{background:#1f3352}
+  .chap.now{background:#284268;color:#fff}
+  .chap b{color:var(--gold);min-width:56px;font-variant-numeric:tabular-nums}
+  table{width:100%;border-collapse:collapse;font-size:15px}
+  td{padding:5px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+  td.en{color:var(--gold);font-weight:800;white-space:nowrap}
+  td.ipa{color:var(--cy);white-space:nowrap}
+  #karta{text-align:center;padding:10px 0}
+  #cz{font-size:clamp(30px,6vw,48px);font-weight:800;margin:6px 0}
+  #en{font-size:clamp(28px,5.5vw,44px);font-weight:900;color:var(--gold);min-height:1.4em}
+  #ipa2{color:var(--cy);min-height:1.4em}
+  .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+  button.b{font:inherit;font-size:18px;font-weight:800;border:0;border-radius:12px;padding:12px 20px;cursor:pointer}
+  .b1{background:var(--gold);color:#101e3a} .b2{background:var(--lime);color:#14240a} .b3{background:#2a3e5e;color:var(--ink)}
+  #stav{color:var(--muted);font-size:15px}
+  footer{text-align:center;color:var(--muted);margin-top:28px;font-size:13px}
+  details summary{cursor:pointer;color:var(--gold);font-weight:bold}
+  details ul{margin:8px 0 0;padding-left:20px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="icons">🇬🇧🤖🏰</div>
+    <h1>Angličtina Unit 5 – City and country</h1>
+    <div class="sub">24 slovíček · výlet robota Chipa do Anglie · test na konci · 10 minut · <span class="badge">NEPTUN PRO</span></div>
+  </header>
+
+  <div class="player"><video id="v" src="video/anglictina_unit5.mp4" poster="miniatura.jpg" controls preload="metadata" playsinline></video></div>
+  <p class="tip">📱 Na mobilu otoč telefon na šířku a dej celou obrazovku ⛶ · v testu na konci máš na každé slovíčko 5 vteřin</p>
+
+  <div class="grid">
+    <div class="box">
+      <h2>🎬 Kapitoly (klikni a video skočí)</h2>
+      <div id="chapters"></div>
+    </div>
+
+    <div class="box">
+      <h2>🎯 Procvičovačka</h2>
+      <div id="karta">
+        <div id="stav"></div>
+        <div id="cz">–</div>
+        <div id="en"></div>
+        <div id="ipa2"></div>
+      </div>
+      <div class="btns">
+        <button class="b b1" id="ukaz">Ukázat anglicky</button>
+        <button class="b b2" id="dalsi">Další slovíčko ➜</button>
+        <button class="b b3" id="znovu">Zamíchat znovu</button>
+      </div>
+    </div>
+
+    <div class="box">
+      <h2>🏙️ 5A In the city</h2>
+      <table id="t5a"></table>
+    </div>
+    <div class="box">
+      <h2>🌳 5B In the country</h2>
+      <table id="t5b"></table>
+    </div>
+
+    <div class="box full">
+      <details>
+        <summary>📸 Odkud jsou fotky (volné licence)</summary>
+        <ul id="kredity"></ul>
+      </details>
+    </div>
+  </div>
+  <footer>Video vyrobil 🔱 NEPTUN PRO (s pomocí AI Claude). Robot Chip, hudba a hlasy jsou vytvořené počítačem, fotky jsou z Wikimedia Commons a Openverse.</footer>
+</div>
+
+<script>
+const CHAPTERS = [[0, "Úvod – co se naučíme"], [43, "1. 5A In the city (výlet po Londýně)"], [234, "2. 5B In the country (venkov a moře)"], [336, "3. Test (24 slovíček náhodně)"]];
+const KREDITY = ["IMG_0714 - Nicola since 1972 (CC BY 2.0, Openverse / flickr)", "London MMB 29 Trafalgar Square.jpg - mattbuck (category) (CC BY-SA 3.0, Wikimedia Commons)", "London, Tower Bridge -- 2016 -- 4676.jpg - Dietmar Rabich (CC BY-SA 4.0, Wikimedia Commons)", "Double-deckers en la calle Cornhill, Londres, Inglaterra, 2014-08-11, DD 145.JPG - Diego Delso (CC BY-SA 4.0, Wikimedia Commons)", "St Paul\u0027s Cathedral Dome from One New Change.jpg - Colin (CC BY-SA 4.0, Wikimedia Commons)", "London Big Ben Inner Clock Face 1070925-PSD.jpg - Ermell (CC BY-SA 4.0, Wikimedia Commons)", "Dolphins in Pine Island Sound - pmarkham (CC BY-SA 2.0, Openverse / flickr)", "Minor road through Dorset countryside - geograph.org.uk - 8262146.jpg - Malc McDonald (CC BY-SA 2.0, Wikimedia Commons)", "Trafalgar Square LED Fountains - June 2009.jpg - Diliff (CC BY-SA 3.0, Wikimedia Commons)", "Mousehole July 2026 03.jpg - ArildV (CC BY-SA 4.0, Wikimedia Commons)", "Little Malvern Hills panorama.jpg - Saffron Blaze (CC BY-SA 3.0, Wikimedia Commons)", "City of London skyline from London City Hall - Oct 2008.jpg - Diliff (CC BY-SA 3.0, Wikimedia Commons)", "Top of Monument to the Great Fire of London.jpg - Colin (CC BY-SA 4.0, Wikimedia Commons)", "Hintze Hall, Natural History Museum, London - 6.jpg - APK (CC BY 4.0, Wikimedia Commons)", "Barton and Newton streets, Macclesfield.jpg - Daniel Case (CC BY-SA 3.0, Wikimedia Commons)", "Buckingham Palace, London - April 2009.jpg - Diliff (CC BY-SA 3.0, Wikimedia Commons)", "Hyde Park July 2015-1.jpg - Alvesgaspar (CC BY-SA 4.0, Wikimedia Commons)", "Palace of Westminster, London - Feb 2007.jpg - Diliff (CC BY-SA 2.5, Wikimedia Commons)", "Trafalgar Square, London 2 - Jun 2009.jpg - Diliff (CC BY-SA 3.0, Wikimedia Commons)", "New Wembley Stadium and Arch from Olympic Way - geograph.org.uk - 2406320 - David Hawgood (CC BY-SA 2.0, Openverse / wikimedia)", "King\u0027s Cross Western Concourse - central position.jpg - Colin (CC BY-SA 3.0, Wikimedia Commons)", "Peter Pan Statue. Kensington Gardens - amandabhslater (CC BY-SA 2.0, Openverse / flickr)", "Tower of London viewed from the River Thames.jpg - Bob Collowan (CC BY-SA 3.0, Wikimedia Commons)", "Morden tube station MMB 03 1995 Stock.jpg - mattbuck (category) (CC BY-SA 4.0, Wikimedia Commons)", "Countryside from the Cotswold Way - geograph.org.uk - 7783396.jpg - Fabian Musto (CC BY-SA 2.0, Wikimedia Commons)", "Seven Sisters Panorama, East Sussex, England - May 2009.jpg - Diliff (CC BY-SA 3.0, Wikimedia Commons)"];
+const SLOVA = [
+  ['art gallery', '/ˈɑːt ˌɡæləri/', 'galerie výtvarného umění', 'A'], ['bridge', '/brɪdʒ/', 'most', 'A'], ['cathedral', '/kəˈθiːdrəl/', 'katedrála', 'A'],
+  ['clock', '/klɒk/', 'hodiny, orloj', 'A'], ['fountain', '/ˈfaʊntən/', 'fontána', 'A'], ['monument', '/ˈmɒnjumənt/', 'památník, pamětihodnost', 'A'],
+  ['museum', '/mjuˈziːəm/', 'muzeum', 'A'], ['palace', '/ˈpæləs/', 'palác', 'A'], ['park', '/pɑːk/', 'park', 'A'], ['river', '/ˈrɪvə(r)/', 'řeka', 'A'],
+  ['square', '/skweə(r)/', 'náměstí', 'A'], ['stadium', '/ˈsteɪdiəm/', 'stadion', 'A'], ['station', '/ˈsteɪʃn/', 'nádraží', 'A'], ['statue', '/ˈstætʃuː/', 'socha', 'A'],
+  ['tower', '/ˈtaʊə(r)/', 'věž', 'A'], ['tunnel', '/ˈtʌnl/', 'tunel', 'A'],
+  ['according to', '/əˈkɔːdɪŋ tə/', 'podle', 'B'], ['dolphin', '/ˈdɒlfɪn/', 'delfín', 'B'], ['far (further, furthest)', '/fɑː(r)/', 'daleko', 'B'], ['harbour', '/ˈhɑːbə(r)/', 'přístav', 'B'],
+  ['hill', '/hɪl/', 'kopec', 'B'], ['ordinary', '/ˈɔːdnri/', 'obyčejný', 'B'], ['survey', '/ˈsɜːveɪ/', 'průzkum', 'B'], ['view', '/vjuː/', 'výhled', 'B']
+];
+// tabulky
+SLOVA.forEach(w => { const tr = document.createElement('tr'); tr.innerHTML = '<td class="en"></td><td class="ipa"></td><td></td>'; tr.children[0].textContent = w[0]; tr.children[1].textContent = w[1]; tr.children[2].textContent = w[2]; document.getElementById(w[3] === 'A' ? 't5a' : 't5b').appendChild(tr); });
+// procvičovačka (náhodné pořadí)
+let poradi = [], i = 0, body = 0;
+const $ = id => document.getElementById(id);
+function zamichej() { poradi = SLOVA.map((_, k) => k); for (let k = poradi.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); [poradi[k], poradi[j]] = [poradi[j], poradi[k]]; } i = 0; ukazCz(); }
+function ukazCz() { const w = SLOVA[poradi[i]]; $('stav').textContent = 'slovíčko ' + (i + 1) + ' z ' + SLOVA.length + ' · řekni anglicky'; $('cz').textContent = w[2]; $('en').textContent = ''; $('ipa2').textContent = ''; }
+$('ukaz').onclick = () => { const w = SLOVA[poradi[i]]; $('en').textContent = w[0]; $('ipa2').textContent = w[1]; };
+$('dalsi').onclick = () => { if (i < SLOVA.length - 1) { i++; ukazCz(); } else { $('stav').textContent = 'Hotovo! Všech 24 slovíček 🎉'; $('cz').textContent = '🏆'; $('en').textContent = ''; $('ipa2').textContent = ''; } };
+$('znovu').onclick = zamichej;
+zamichej();
+// video a kapitoly
+const v = document.getElementById('v');
+const zvukZap = () => { v.muted = false; v.defaultMuted = false; v.removeAttribute('muted'); if (v.volume < 0.05) v.volume = 1; };
+zvukZap(); v.addEventListener('loadedmetadata', zvukZap); v.addEventListener('play', zvukZap);
+const fmt = s => Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+const box = document.getElementById('chapters');
+CHAPTERS.forEach(([t, name]) => {
+  const b = document.createElement('button'); b.className = 'chap'; b.dataset.t = t;
+  b.innerHTML = '<b>' + fmt(t) + '</b><span></span>'; b.children[1].textContent = name;
+  b.onclick = () => { const go = () => { zvukZap(); v.currentTime = t; v.play().catch(() => {}); }; if (v.readyState >= 1) go(); else { v.addEventListener('loadedmetadata', go, { once: true }); v.load(); } v.scrollIntoView({ behavior: 'smooth', block: 'center' }); };
+  box.appendChild(b);
+});
+v.addEventListener('timeupdate', () => { let cur = null; document.querySelectorAll('.chap').forEach(b => { b.classList.remove('now'); if (+b.dataset.t <= v.currentTime) cur = b; }); if (cur) cur.classList.add('now'); });
+const ul = document.getElementById('kredity');
+KREDITY.forEach(k => { const li = document.createElement('li'); li.textContent = k; ul.appendChild(li); });
+</script>
+</body>
+</html>
